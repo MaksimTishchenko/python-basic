@@ -19,6 +19,16 @@ ODD = "odd"
 EVEN = "even"
 PRIME = "prime"
 
+def is_prime(number):
+    """
+    Вспомогательная функция, проверяет, является ли число простым.
+    """
+    if number < 2:
+        return False
+    for i in range(2, int(number ** 0.5) + 1):
+        if number % i == 0:
+            return False
+    return True
 
 def filter_numbers(numbers_list, filter_type):
     """
@@ -31,5 +41,11 @@ def filter_numbers(numbers_list, filter_type):
     >>> filter_numbers([2, 3, 4, 5], EVEN)
     <<< [2, 4]
     """
-    if filter_type == ODD
+    if filter_type == ODD:
         return [number for number in numbers_list if number % 2 != 0]
+    elif filter_type == EVEN:
+        return [number for number in numbers_list if number % 2 == 0]
+    elif filter_type == PRIME:
+        return [number for number in numbers_list if is_prime(number)]
+    else:
+        return []
